@@ -5,16 +5,30 @@
   {{ range $index, $value := (.GetTerms $taxonomy) }}
     {{- /* Highlight the author's name? */ -}}
     {{- $highlight_name := .Page.Params.highlight_name | default false -}}
+    {{- $link := .Page.Params.home_page -}}
 
     {{- if gt $index 0 }}, {{ end -}}
-    <span {{ if $highlight_name }}class="author-highlighted"{{end}}>
-      {{/* Effectively check the page's `_build` option as `_build` is not exposed in Hugo's Page object. */}}
-      {{- if .RelPermalink -}}
-        <a href="{{.RelPermalink}}">{{.LinkTitle}}</a>
-      {{- else -}}
-        {{ .LinkTitle }}
+
+    {{/* Effectively check the page's `_build` option as `_build` is not exposed in Hugo's Page object. */}}
+    {{ $name := .LinkTitle }}
+    <!-- {{/* Another way of adding links to author by defining the author_pages param */}}
+    {{- if isset $.Params "author_pages" -}}
+    {{ $link := index $.Params.author_pages $index }}
+      {{- if $link -}}
+        <a href="{{$link}}" class="author-linked">{{$name}}</a>
+        {{- else -}}
+        <a>{{ $name }}</a>
       {{- end -}}
-    </span>
+    {{- end -}} -->
+
+    {{- if $link -}}
+      <a href="{{$link}}" class="author-linked">{{$name}}</a>
+    {{- else if $highlight_name -}}
+      <b>{{ $name }}</b>
+    {{- else -}}
+      {{ $name }}
+    {{- end -}} 
+
     {{- if isset $.Params "author_notes" -}}
       {{- with (index $.Params.author_notes $index) -}}
         <i class="author-notes fas fa-info-circle" data-toggle="tooltip" title="{{.}}"></i>

@@ -67,7 +67,9 @@
 }
 
 .article-title {
-  font-size: 1.75rem;
+  font-family: $sta-font-heading, sans-serif;
+  font-weight: bold;
+  margin-bottom: -0.6rem;
 }
 
 .article-title a {
@@ -133,11 +135,14 @@
     color: $sta-primary;
   }
   .author-notes {
-    cursor: help;
-    padding-left: 3px;
+    // cursor: help;
+    padding-left: 2px;
   }
   .author-highlighted {
     font-weight: bold;
+  }
+  .author-linked {
+    color: $sta-primary;
   }
 }
 
