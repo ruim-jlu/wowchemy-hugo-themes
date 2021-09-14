@@ -74,15 +74,19 @@
     {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
     {{ if and $page.Params.widget $page.Title }}<h1>{{ $page.Title | markdownify | emojify }}</h1>{{ end }}
 
-    <div class="article-style">
+    <div class="article-style about-content">
       {{ $person_page.Content }}
+    </div>
+
+    <div class="article-style about-announce">
+      {{ $person.announce | markdownify }}
     </div>
 
     <div class="row">      
       {{ with $person.education }}
-      <div class="col-md-5">
-        <div class="section-subheading">{{ i18n "education" | markdownify }}</div>
-        <ul class="ul-edu fa-ul mb-3">
+      <div class="col-md-6">
+        <div class="about-subheading">{{ i18n "education" | markdownify }}</div>
+        <ul class="ul-edu fa-ul mb-1">
           {{ range .courses }}
           <li>
             <i class="fa-li fas fa-graduation-cap"></i>
@@ -96,23 +100,18 @@
       </div>
       {{ end }}
 
-      {{ with $person.interests }}
-      <div class="col-md-3">
-        <div class="section-subheading">{{ i18n "interests" | markdownify }}</div>
-        <ul class="ul-interests mb-0">
-          {{ range . }}
-          <li>{{ . | markdownify | emojify }}</li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
-      {{ with $person.contact }}
-      <div class="col-md-4">
-        <div class="section-subheading">{{ i18n "contact" | markdownify }}</div>
-        <ul class="ul-interests mb-0">
-          {{ range . }}
-          <li>{{ . | markdownify | emojify }}</li>
+      {{ with $person.work }}
+      <div class="col-md-5">
+        <div class="about-subheading">{{ i18n "work" | markdownify }}</div>
+        <ul class="ul-edu fa-ul mb-3">
+          {{ range .places }}
+          <li>
+            <i class="fa-li fas fa-{{ .icon }}"></i>
+            <div class="description">
+              <p class="course">{{ .role }}, {{ .period }}</p>
+              <p class="institution">{{ .institution }}</p>
+            </div>
+          </li>
           {{ end }}
         </ul>
       </div>

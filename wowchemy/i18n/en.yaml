@@ -98,6 +98,9 @@
 - id: interests
   translation: Interests
 
+- id: work
+  translation: Work
+
 - id: education
   translation: Education
 
