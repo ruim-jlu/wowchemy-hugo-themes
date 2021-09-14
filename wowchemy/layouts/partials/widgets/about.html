@@ -42,6 +42,17 @@
           {{ if .url }}</a>{{ end }}
         </h3>
         {{ end }}
+
+        <div class="portrait-title profile_contact">
+          {{ range $person.contact }}
+            {{ with .email }} 
+              Email: {{ . | markdownify | emojify }}</br>
+            {{ end }}
+            {{ with .address }} 
+              Address: {{ . | markdownify | emojify }}
+            {{ end }}
+          {{ end }}
+        </div>
       </div>
 
       <ul class="network-icon" aria-hidden="true">

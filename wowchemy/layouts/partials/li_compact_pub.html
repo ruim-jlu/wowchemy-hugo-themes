@@ -33,9 +33,7 @@
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ with $resource }}
     {{ $image := .Resize "200x" }}
-    <a href="{{$link}}" {{ $target | safeHTMLAttr }}>
-      <img src="{{ $image.RelPermalink }}" alt="{{ $item.Title }}" loading="lazy">
-    </a>
+    <img src="{{ $image.RelPermalink }}" alt="{{ $item.Title }}" loading="lazy">
     {{end}}
   </div>
 
