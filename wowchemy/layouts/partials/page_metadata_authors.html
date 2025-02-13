@@ -31,8 +31,15 @@
 
     {{- if isset $.Params "author_notes" -}}
       {{- with (index $.Params.author_notes $index) -}}
+      {{ if eq . "Corresponding Author" }}
+        <i class="author-notes" data-toggle="tooltip" title="{{.}}">#</i>
+     {{ else if eq . "Co-first Author" }}
+        <i class="author-notes" data-toggle="tooltip" title="{{.}}">*</i>
+      {{ else }}
         <i class="author-notes fas fa-info-circle" data-toggle="tooltip" title="{{.}}"></i>
-      {{- end -}}
+        <!-- <i class="author-notes fas fa-asterisk fa-hashtag fa-star-of-life" data-toggle="tooltip" title="{{.}}"></i> -->
+      {{ end }}
+        {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

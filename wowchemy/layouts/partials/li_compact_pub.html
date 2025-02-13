@@ -28,32 +28,32 @@
   {{ $summary = $item.Summary }}
 {{ end }}
 
-<div class="media stream-item mb-3">
+<div class="media stream-item mb-3 ">
   <div class="my-auto">
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ with $resource }}
-    {{ $image := .Resize "200x" }}
+    {{ $image := .Resize "500x jpeg" }}
     <img src="{{ $image.RelPermalink }}" alt="{{ $item.Title }}" loading="lazy">
     {{end}}
   </div>
 
-  <div class="media-body ml-5 my-auto">
+  <div class="media-body ml-5 my-auto ">
     <div class="article-title">
       <a>{{ $item.Title }}</a>
     </div>
 
-    <div class="stream-meta article-metadata">
+    <div class="stream-meta article-metadata ">
       <a>{{- .Params.publication | markdownify -}}</a> </br>
       <a>{{ partial "page_metadata_authors" $item }}</a>
     </div>
 
-    {{ with $summary }}
+    <!-- {{ with $summary }}
     <a>
       <div class="article-style">
         {{.}}
       </div>
     </a>
-    {{ end }}
+    {{ end }} -->
 
     {{ if $has_attachments }}
     <div class="btn-links">
