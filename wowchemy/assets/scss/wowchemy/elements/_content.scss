@@ -124,7 +124,7 @@
 .article-metadata {
   margin-bottom: 15px;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.03em;
   color: rgba(0, 0, 0, 0.54);
 
@@ -162,7 +162,7 @@ article .article-metadata {
 }
 
 .stream-meta.article-metadata {
-  margin-bottom: 5px;
+  margin-bottom: -0.1rem;
 }
 
 .article-categories {
@@ -184,8 +184,8 @@ article .article-metadata {
  **************************************************/
 
 .content-widget-hr {
-  margin-top: 1.2rem;
-  padding-top: 1.2rem;
+  margin-top: 1.0rem;
+  padding-top: 1.0rem;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 

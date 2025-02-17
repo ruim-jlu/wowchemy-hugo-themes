@@ -28,7 +28,7 @@
   {{ $summary = $item.Summary }}
 {{ end }}
 
-<div class="media stream-item mb-3 ">
+<div class="media stream-item mb-2">
   <div class="my-auto">
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ with $resource }}
